@@ -36,6 +36,7 @@ TYPO3:
 
             formEditorPartials:
               Inspector-MauticPropertySelectEditor: 'Inspector/MauticPropertySelectEditor'
+              Inspector-MauticServerSelectEditor: 'Inspector/MauticServerSelectEditor'
 
           formElementsDefinition:
             Form:
@@ -125,24 +126,14 @@ TYPO3:
                 iconIdentifier: 't3-form-icon-finisher'
                 predefinedDefaults:
                   options:
-                    mauticUrl: ''
-                    mauticUsername: ''
-                    mauticPassword: ''
+                    mauticServer: ''
 
               # define plugins overidable finisher settings
               FormEngine:
                 label: 'Mautic'
                 elements:
-                  mauticUrl:
-                    label: 'Mautic URL'
-                    config:
-                      type: 'input'
-                  mauticUsername:
-                    label: 'Mautic username'
-                    config:
-                      type: 'input'
-                  mauticPassword:
-                    label: 'Mautic password'
+                  mauticServer:
+                    label: 'Mautic Server'
                     config:
                       type: 'input'
 
@@ -174,21 +165,11 @@ TYPO3:
                 10: 'TYPO3.CMS.Form.mixins.formElementMixins.BaseCollectionEditorsMixin'
               100:
                 label: 'Send to Mautic Form'
-              200:
-                identifier: 'mauticUrl'
-                templateName: 'Inspector-TextEditor'
-                label: 'Override Mautic URL'
-                propertyPath: 'options.mauticUrl'
-              300:
-                identifier: 'mauticUsername'
-                templateName: 'Inspector-TextEditor'
-                label: 'Override Mautic username'
-                propertyPath: 'options.mauticUsername'
-              400:
-                identifier: 'mauticPassword'
-                templateName: 'Inspector-TextEditor'
-                label: 'Override Mautic password'
-                propertyPath: 'options.mauticPassword'
+              250:
+                identifier: 'mauticServer'
+                templateName: 'Inspector-MauticServerSelectEditor'
+                label: 'Mautic Server'
+                propertyPath: 'options.mauticServer'
 
           mauticContactFinisherMixin:
             editors:
