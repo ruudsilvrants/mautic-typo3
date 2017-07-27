@@ -96,34 +96,6 @@ TYPO3:
               formEditor:
                 iconIdentifier: 't3-form-icon-finisher'
 
-        ########### MAUTIC STANDALONE FORMS ###########
-        mautic_finisher_standalone_prototype:
-          __inheritances:
-            10: 'TYPO3.CMS.Form.prototypes.standard'
-
-          formElementsDefinition:
-            Form:
-              formEditor:
-                editors:
-                  900:
-                    selectOptions:
-                      1010:
-                        value: 'MauticFinisher'
-                        label: 'Send to Mautic Form'
-
-                propertyCollections:
-                  finishers:
-                    1101:
-                      __inheritances:
-                        10: 'TYPO3.CMS.Form.mixins.formElementMixins.mauticFinisherMixin'
-                      identifier: 'MauticFinisher'
-
-          finishersDefinition:
-            MauticFinisher:
-              implementationClassName: 'Mautic\Mautic\Domain\Finishers\MauticFinisher'
-              formEditor:
-                iconIdentifier: 't3-form-icon-finisher'
-
         ########### MAUTIC CAMPAIGN FORMS ###########
         mautic_finisher_campaign_prototype:
           __inheritances:
@@ -151,6 +123,33 @@ TYPO3:
               implementationClassName: 'Mautic\Mautic\Domain\Finishers\MauticFinisher'
               formEditor:
                 iconIdentifier: 't3-form-icon-finisher'
+                predefinedDefaults:
+                  options:
+                    mauticUrl: ''
+                    mauticUsername: ''
+                    mauticPassword: ''
+
+              # define plugins overidable finisher settings
+              FormEngine:
+                label: 'Mautic'
+                elements:
+                  mauticUrl:
+                    label: 'Mautic URL'
+                    config:
+                      type: 'input'
+                  mauticUsername:
+                    label: 'Mautic username'
+                    config:
+                      type: 'input'
+                  mauticPassword:
+                    label: 'Mautic password'
+                    config:
+                      type: 'input'
+
+        ########### MAUTIC STANDALONE FORMS ###########
+        mautic_finisher_standalone_prototype:
+          __inheritances:
+            10: 'TYPO3.CMS.Form.prototypes.mautic_finisher_campaign_prototype'
 
 
       ########### MIXINS ###########
@@ -175,6 +174,21 @@ TYPO3:
                 10: 'TYPO3.CMS.Form.mixins.formElementMixins.BaseCollectionEditorsMixin'
               100:
                 label: 'Send to Mautic Form'
+              200:
+                identifier: 'mauticUrl'
+                templateName: 'Inspector-TextEditor'
+                label: 'Override Mautic URL'
+                propertyPath: 'options.mauticUrl'
+              300:
+                identifier: 'mauticUsername'
+                templateName: 'Inspector-TextEditor'
+                label: 'Override Mautic username'
+                propertyPath: 'options.mauticUsername'
+              400:
+                identifier: 'mauticPassword'
+                templateName: 'Inspector-TextEditor'
+                label: 'Override Mautic password'
+                propertyPath: 'options.mauticPassword'
 
           mauticContactFinisherMixin:
             editors:

@@ -13,15 +13,22 @@ TYPO3:
                 10: 'TYPO3.CMS.Form.mixins.finishersEmailMixin'
               implementationClassName: 'Mautic\Mautic\Domain\Finishers\MauticContactFinisher'
 
-        mautic_finisher_standalone_prototype:
-          __inheritances:
-            10: 'TYPO3.CMS.Form.prototypes.standard'
-
-          finishersDefinition:
-            MauticFinisher:
-              __inheritances:
-                10: 'TYPO3.CMS.Form.mixins.finishersEmailMixin'
-              implementationClassName: 'Mautic\Mautic\Domain\Finishers\MauticFinisher'
+              # define plugins overidable finisher settings
+              FormEngine:
+                label: 'Mautic'
+                elements:
+                  mauticUrl:
+                    label: 'Mautic URL'
+                    config:
+                      type: 'input'
+                  mauticUsername:
+                    label: 'Mautic username'
+                    config:
+                      type: 'input'
+                  mauticPassword:
+                    label: 'Mautic password'
+                    config:
+                      type: 'input'
 
         mautic_finisher_campaign_prototype:
           __inheritances:
@@ -32,3 +39,24 @@ TYPO3:
               __inheritances:
                 10: 'TYPO3.CMS.Form.mixins.finishersEmailMixin'
               implementationClassName: 'Mautic\Mautic\Domain\Finishers\MauticFinisher'
+
+              # define plugins overidable finisher settings
+              FormEngine:
+                label: 'Mautic'
+                elements:
+                  mauticUrl:
+                    label: 'Mautic URL'
+                    config:
+                      type: 'input'
+                  mauticUsername:
+                    label: 'Mautic username'
+                    config:
+                      type: 'input'
+                  mauticPassword:
+                    label: 'Mautic password'
+                    config:
+                      type: 'input'
+
+        mautic_finisher_campaign_prototype:
+          __inheritances:
+            10: 'TYPO3.CMS.Form.prototypes.mautic_finisher_campaign_prototype'
